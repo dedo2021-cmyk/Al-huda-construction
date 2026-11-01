@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة الهدى للإنشاءات والتشطيبات</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0b1329',
+                        gold: '#d4af37',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        body { font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-navy text-white p-4 sticky top-0 z-50 shadow-lg border-b-2 border-gold">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gold">شركة الهدى للإنشاءات والتشطيبات</h1>
+            <nav class="hidden md:flex space-x-6 space-x-reverse">
+                <a href="#calculator" class="hover:text-gold transition">احسب تكلفتك</a>
+                <a href="#packages" class="hover:text-gold transition">الباقات</a>
+                <a href="#work" class="hover:text-gold transition">معرض الأعمال</a>
+            </nav>
+            <a href="https://www.facebook.com/share/1H8E8sNcQQ/" target="_blank" class="text-gold hover:text-white transition">
+                <i class="fab fa-facebook fa-2x"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-navy text-white py-20 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">تشطيب شقتك يبدأ بتأسيس صح ... وينتهي بتسليم يُشرّفك</h2>
+            <p class="text-xl mb-10 text-gray-300">نبدأ بمعاينة مجانية ونختار بباقاتنا على بنود وخامات واضحة، مع متابعة هندسية من أول خطوة لحد التسليم.</p>
+            <div class="space-x-4 space-x-reverse">
+                <a href="#calculator" class="bg-gold text-navy font-bold py-3 px-8 rounded-lg hover:bg-yellow-500 transition">احسب تكلفة شقتك ←</a>
+                <a href="#packages" class="border border-gold text-gold font-bold py-3 px-8 rounded-lg hover:bg-gold hover:text-navy transition">احجز معاينة مجانية</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-2xl shadow-2xl rounded-2xl p-10 border border-gray-100">
+            <h2 class="text-3xl font-bold text-navy mb-10 text-center">احسب تكلفة وحدتك</h2>
+            
+            <div class="mb-6">
+                <label class="block text-navy font-bold mb-2">المساحة الصافية (م²):</label>
+                <input type="number" id="areaInput" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-gold" placeholder="أدخل المساحة بالأمتار" min="0" oninput="calculateCost()">
+            </div>
+
+            <div class="mb-8">
+                <label class="block text-navy font-bold mb-2">باقة التشطيب:</label>
+                <select id="packageSelect" class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-gold" onchange="calculateCost()">
+                    <option value="foundation">باقة التأسيس (1500 ج.م/م²)</option>
+                    <option value="bronze">الباقة البرونزية (4000 ج.م/م²)</option>
+                    <option value="silver">الباقة الفضية (4750 ج.م/م²)</option>
+                    <option value="gold">الباقة الذهبية (5500 ج.م/م²)</option>
+                    <option value="platinum">الباقة البلاتينية (6500 ج.م/م²)</option>
+                </select>
+            </div>
+
+            <div class="bg-navy text-white rounded-lg p-6 mb-8 text-center">
+                <p class="text-lg text-gray-300 mb-2">التكلفة التقديرية:</p>
+                <h3 id="totalOutput" class="text-4xl font-bold text-gold">0 جنيه</h3>
+            </div>
+
+            <a id="whatsappBtn" href="#" target="_blank" class="block w-full bg-green-500 text-white font-bold py-4 px-8 rounded-lg text-center hover:bg-green-600 transition text-lg">
+                <i class="fab fa-whatsapp mr-2"></i> اطلب عرض سعر تفصيلي على واتساب
+            </a>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-navy mb-16">باقات التشطيب</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg border-b-4 border-gold">
+                    <h3 class="text-2xl font-bold text-navy mb-4">البرونزية</h3>
+                    <p class="text-gray-600 mb-6">حلول اقتصادية وعملية بأعلى جودة تأسيس.</p>
+                    <span class="text-3xl font-bold text-gold">4000 ج.م</span>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg border-b-4 border-gold">
+                    <h3 class="text-2xl font-bold text-navy mb-4">الفضية</h3>
+                    <p class="text-gray-600 mb-6">متوازنـة بين الميزانيـة والخامـات الفاخرة.</p>
+                    <span class="text-3xl font-bold text-gold">4750 ج.م</span>
+                </div>
+                <div class="bg-navy text-white p-8 rounded-lg shadow-lg border-b-4 border-gold">
+                    <h3 class="text-2xl font-bold text-gold mb-4">الذهبية</h3>
+                    <p class="text-gray-300 mb-6">فخامـة وتشطيبات متكاملـة ترضي جميع الأذواق.</p>
+                    <span class="text-3xl font-bold text-white">5500 ج.م</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-10 text-center">
+        <div class="container mx-auto px-4">
+            <h3 class="text-2xl font-bold text-gold mb-6">شركة الهدى للإنشاءات والتشطيبات</h3>
+            <div class="flex justify-center space-x-6 space-x-reverse mb-8">
+                <a href="https://www.facebook.com/share/1H8E8sNcQQ/" target="_blank" class="hover:text-gold transition">
+                    <i class="fab fa-facebook fa-lg"></i> الفيسبوك
+                </a>
+                <a href="https://wa.me/201143018936" target="_blank" class="hover:text-gold transition">
+                    <i class="fab fa-whatsapp fa-lg"></i> واتساب
+                </a>
+            </div>
+            <p>&copy; 2026 جميع الحقوق محفوظة لشركة الهدى</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/201143018936" target="_blank" 
+       class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition duration-300 z-50 flex items-center justify-center w-14 h-14">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Calculator Script -->
+    <script>
+        const packagePrices = {
+            foundation: 1500,
+            bronze: 4000,
+            silver: 4750,
+            gold: 5500,
+            platinum: 6500
+        };
+
+        const packageNames = {
+            foundation: "التأسيس",
+            bronze: "البرونزية",
+            silver: "الفضية",
+            gold: "الذهبية",
+            platinum: "البلاتينية"
+        };
+
+        function calculateCost() {
+            const area = parseFloat(document.getElementById('areaInput').value) || 0;
+            const selectedPackage = document.getElementById('packageSelect').value;
+            const pricePerMeter = packagePrices[selectedPackage] || 0;
+            const packageName = packageNames[selectedPackage] || "";
+
+            const totalCost = area * pricePerMeter;
+
+            document.getElementById('totalOutput').innerText = totalCost.toLocaleString('ar-EG') + ' جنيه';
+
+            const whatsappNumber = "201143018936";
+            const message = `أهلاً شركة الهدى للإنشاءات والتشطيبات، حابب استفسر عن معاينة شقة مساحتها ${area} م² صافي بباقة (${packageName})، التكلفة التقديرية: ${totalCost.toLocaleString('ar-EG')} جنيه.`;
+            document.getElementById('whatsappBtn').href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        }
+    </script>
+</body>
+</html>
