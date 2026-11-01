@@ -3,92 +3,428 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة الهدى للإنشاءات والتشطيبات</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: '#0b1329',
-                        gold: '#d4af37'
-                    }
-                }
-            }
-        }
-    </script>
+    <title>الهدى للإنشاءات والتشطيبات | الهدى للمقاولات</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-        body { font-family: 'Cairo', sans-serif; }
+        :root {
+            --primary-color: #1a365d;   /* أزرق هندسي داكن */
+            --secondary-color: #c59b27; /* ذهبي / نحاسي */
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --whatsapp-color: #25d366;
+            --facebook-color: #1877f2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-bottom: 70px; /* مساحة للأزرار الثابتة أسفل الشاشة */
+        }
+
+        /* Header / Navbar */
+        header {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(15, 23, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?q=80&w=1200&auto=format&fit=crop') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .hero span {
+            color: var(--secondary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 25px;
+            color: #e2e8f0;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s transform, 0.3s background-color;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp-color);
+            color: var(--white);
+        }
+
+        .btn-facebook {
+            background-color: var(--facebook-color);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* Services Section */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-top-color: var(--secondary-color);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Portfolio / Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            height: 220px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 54, 93, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        /* Floating Bottom Action Bar (For Mobile) */
+        .floating-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+
+        .floating-bar a {
+            flex: 1;
+            margin: 0 5px;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            nav { display: none; } /* لإبقاء التنقل بسيط على الشاشات الصغيرة */
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-    <header class="bg-navy text-white p-4 sticky top-0 z-50 shadow-lg border-b-2 border-gold">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-gold">شركة الهدى للإنشاءات والتشطيبات</h1>
-            <nav class="space-x-4">
-                <a href="#calculator" class="hover:text-gold transition">حاسبة التكلفة</a>
-                <a href="#packages" class="hover:text-gold transition">باقات التشطيب</a>
-            </nav>
-        </div>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <i class="fa-solid fa-helmet-safety"></i>
+            الهدى للإنشاءات
+        </a>
+        <nav>
+            <a href="#services">خدماتنا</a>
+            <a href="#gallery">أعمالنا</a>
+            <a href="#contact">تواصل معنا</a>
+        </nav>
     </header>
 
-    <main class="container mx-auto py-8 px-4">
-        <section id="calculator" class="bg-white p-6 rounded-2xl shadow-xl border border-gold mb-12">
-            <h2 class="text-3xl font-bold mb-6 text-navy border-b-2 border-gold pb-2">حاسبة تكلفة التشطيب</h2>
-            
-            <div class="space-y-4">
-                <div>
-                    <label class="block font-bold mb-1">المساحة بالمتر المربع:</label>
-                    <input type="number" id="area" placeholder="أدخل المساحة هنا" class="w-full border-2 border-gold rounded-lg p-3 focus:outline-none focus:border-navy">
-                </div>
-
-                <div>
-                    <label class="block font-bold mb-1">اختر باقة التشطيب:</label>
-                    <select id="package" class="w-full border-2 border-gold rounded-lg p-3 focus:outline-none focus:border-navy">
-                        <option value="economy">الباقة الاقتصادية</option>
-                        <option value="standard">الباقة القياسية</option>
-                        <option value="luxury">الباقة الفاخرة</option>
-                    </select>
-                </div>
-
-                <button class="bg-gold text-navy font-bold py-3 px-8 rounded-lg w-full hover:bg-yellow-500 transition shadow-lg" onclick="calculateCost()">احسب التكلفة</button>
-            </div>
-
-            <div class="mt-6 p-4 bg-navy rounded-lg text-white">
-                <h3 class="text-xl font-bold">التكلفة التقديرية:</h3>
-                <p id="totalCost" class="text-4xl font-bold text-gold">0 جنيه</p>
-            </div>
-            
-            <a id="whatsappBtn" href="#" target="_blank" class="hidden mt-4 block w-full bg-green-500 text-white font-bold py-4 rounded-lg text-center hover:bg-green-600 transition shadow-lg">
-                <i class="fab fa-whatsapp mr-2"></i> اطلب عرض سعر تفصيلي على واتساب
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>مؤسسة <span>الهدى</span> للإنشاءات والتشطيبات</h1>
+        <p>ننفذ أحلامك المعمارية بأعلى معايير الجودة والدقة الهندسية. تصميم، بناء، وتسطيبات متكاملة.</p>
+        <div class="hero-btns">
+            <a href="https://wa.me/201143018936" target="_blank" class="btn btn-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> تواصل عبر الواتساب
             </a>
-        </section>
-        
-        <script>
-            function calculateCost() {
-                const area = parseFloat(document.getElementById('area').value);
-                const pkg = document.getElementById('package').value;
-                const pricePerMeter = { economy: 1500, standard: 2500, luxury: 4000 };
-                const packageNames = { economy: 'الاقتصادية', standard: 'القياسية', luxury: 'الفاخرة' };
-                
-                if (isNaN(area) || area <= 0) {
-                    alert('يرجى إدخال مساحة صحيحة.');
-                    return;
-                }
-                
-                const totalCost = area * pricePerMeter[pkg];
-                document.getElementById('totalCost').innerText = totalCost.toLocaleString() + ' جنيه';
-                
-                const whatsappBtn = document.getElementById('whatsappBtn');
-                const message = `أريد عرض سعر لتشطيب شقة مساحتها ${area} متر مربع بالباقة ${packageNames[pkg]}. التكلفة التقديرية هي ${totalCost.toLocaleString()} جنيه.`;
-                whatsappBtn.href = `https://wa.me/201143054179?text=${encodeURIComponent(message)}`;
-                whatsappBtn.classList.remove('hidden');
-            }
-        </script>
-    </main>
+            <a href="https://www.facebook.com/share/1FN5FXCPqE/" target="_blank" class="btn btn-facebook">
+                <i class="fa-brands fa-facebook"></i> صفحتنا على الفيسبوك
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="container" id="services">
+        <div class="section-title">
+            <h2>خدماتنا الهندسية</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-building-user"></i>
+                <h3>التصميم والتنفيذ المعماري</h3>
+                <p>إعداد التصاميم المعمارية والإنشائية المعتمدة وتنفيذها وفقاً لأعلى معايير الكود الموحد.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-paint-roller"></i>
+                <h3>التشطيبات والديكور</h3>
+                <p>تشطيبات متكاملة (مودرن وكلاسيك) للفيلا، الشقق، والمقرات الإدارية بأعلى خامات الجودة.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-compass-drafting"></i>
+                <h3>الإشراف الهندسي</h3>
+                <p>إشراف هندسي متكامل ومتابعة ميدانية دقيقة لجميع مراحل البناء والتشطيب لضمان سلامة التنفيذ.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-calculator"></i>
+                <h3>حصر الكميات المقايسات</h3>
+                <p>حساب دقيق لكافة الخامات والميزانيات التقديرية وضمان أقصى توفير للموارد دون المساس بالجودة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="container" id="gallery">
+        <div class="section-title">
+            <h2>معرض من مشاريعنا</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop" alt="مشروع إنشاء">
+                <div class="gallery-overlay">إنشاءات سكنية</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=600&auto=format&fit=crop" alt="تشطيب داخلي">
+                <div class="gallery-overlay">تشطيبات داخلية</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=600&auto=format&fit=crop" alt="تصميم معماري">
+                <div class="gallery-overlay">واجهات ومعمار</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=600&auto=format&fit=crop" alt="إشراف موقع">
+                <div class="gallery-overlay">إشراف وتنفيذ</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Box -->
+    <section class="container" id="contact">
+        <div class="contact-box">
+            <h3>جاهزون لتنفيذ مشروعك القادم</h3>
+            <p>تواصل معنا اليوم واستشر مهندسينا للحصول على معاينة ومقايسة مخصصة لمشروعك.</p>
+            <div class="contact-links">
+                <a href="https://wa.me/201143018936" target="_blank" class="btn btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> واتساب: 01143018936
+                </a>
+                <a href="https://www.facebook.com/share/1FN5FXCPqE/" target="_blank" class="btn btn-facebook">
+                    <i class="fa-brands fa-facebook"></i> صفحة الفيسبوك
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Bar for Mobile -->
+    <div class="floating-bar">
+        <a href="https://wa.me/201143018936" target="_blank" class="btn btn-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i> واتساب
+        </a>
+        <a href="tel:00201143018936" class="btn btn-secondary">
+            <i class="fa-solid fa-phone"></i> اتصال
+        </a>
+        <a href="https://www.facebook.com/share/1FN5FXCPqE/" target="_blank" class="btn btn-facebook">
+            <i class="fa-brands fa-facebook"></i> فيسبوك
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 الهدى للإنشاءات والتشطيبات - جميع الحقوق محفوظة.</p>
+    </footer>
+
 </body>
 </html>
-
