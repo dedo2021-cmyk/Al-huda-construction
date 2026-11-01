@@ -120,19 +120,42 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hero Section */
+        /* Hero Slider Section */
         .hero {
-            min-height: 80vh;
+            position: relative;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            overflow: hidden;
             padding: 60px 20px;
-            background: linear-gradient(rgba(9, 13, 22, 0.85), rgba(9, 13, 22, 0.98)), 
-                        url('https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?q=80&w=1600&auto=format&fit=crop') center/cover;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 1;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(9, 13, 22, 0.75), rgba(9, 13, 22, 0.95));
+            z-index: 2;
         }
 
         .hero-content {
+            position: relative;
+            z-index: 3;
             max-width: 850px;
         }
 
@@ -537,7 +560,14 @@
 
     <!-- PAGE 1: HOME -->
     <div id="page-home" class="page-section active">
+        <!-- Hero Slider Section with Images -->
         <section class="hero">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?q=80&w=1600&auto=format&fit=crop');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600&auto=format&fit=crop');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1600&auto=format&fit=crop');"></div>
+            
+            <div class="hero-overlay"></div>
+
             <div class="hero-content">
                 <span class="hero-badge">مؤسسة هندسية متكاملة</span>
                 <h1>نصنع الجودة في <span>الإنشاءات والتشطيبات</span></h1>
@@ -678,7 +708,7 @@
                     </div>
                     <ul class="pricing-features">
                         <li><i class="fa-solid fa-check"></i> الحفر وأعمال الاحلال والدمك</li>
-                        <li><i class="fa-solid fa-check"></i> تنفيذ القواعد والأساسات والشدادk</li>
+                        <li><i class="fa-solid fa-check"></i> تنفيذ القواعد والأساسات والشدات</li>
                         <li><i class="fa-solid fa-check"></i> صب الأعمدة والأسقف الخرسانية</li>
                         <li><i class="fa-solid fa-check"></i> مباني الطوب الخارجي والداخلي</li>
                         <li><i class="fa-solid fa-check"></i> إشراف هندسي واختبار مكعبات خرسانية</li>
@@ -699,7 +729,7 @@
                         <li><i class="fa-solid fa-check"></i> المحارة والبياض والتأمين ضد الشروخ</li>
                         <li><i class="fa-solid fa-check"></i> أرضيات بورسلين وسيراميك فاخر</li>
                         <li><i class="fa-solid fa-check"></i> دهانات حديثة ومعجون متطور</li>
-                        <li><i class="fa-solid fa-check"></i> الأبواب الخشبية والأسقف المعلقة (جبسوم بوررد)</li>
+                        <li><i class="fa-solid fa-check"></i> الأبواب الخشبية والأسقف المعلقة (جبسوم بورد)</li>
                     </ul>
                     <a href="https://wa.me/00201143018936?text=السلام عليكم، أرغب في الاستفسار عن باقة التشطيبات الفاخرة" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center;">اختر الباقة</a>
                 </div>
@@ -868,7 +898,7 @@
         <p>&copy; 2026 الهدى للإنشاءات والتشطيبات - جميع الحقوق محفوظة.</p>
     </footer>
 
-    <!-- JavaScript Navigation and Calculator Logic -->
+    <!-- JavaScript Navigation and Slider Logic -->
     <script>
         // Page Switching Logic
         function showPage(pageId) {
@@ -883,6 +913,17 @@
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // Hero Slider Automatic Rotation
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        function nextSlide() {
+            if(slides.length === 0) return;
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 4000); // تغيير الصورة كل 4 ثوانٍ
 
         // Portfolio Filter Logic
         function filterPortfolio(category) {
